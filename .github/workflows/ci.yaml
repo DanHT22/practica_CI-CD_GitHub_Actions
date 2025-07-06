@@ -1,0 +1,14 @@
+name: Practica CI
+
+on: push
+
+jobs:
+  job_configuraciones:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+        
