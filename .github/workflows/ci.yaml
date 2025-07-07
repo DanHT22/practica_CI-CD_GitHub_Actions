@@ -50,7 +50,7 @@ jobs:
       - name: Deploy
         id: deployment-pages
         uses: actions/deploy-pages@v4 
-      
+
       - name: Obtener URL de la página
         run: echo " ${{ steps.deployment-pages.outputs.deployment-url }}"
 
