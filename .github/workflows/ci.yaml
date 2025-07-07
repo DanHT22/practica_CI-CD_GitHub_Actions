@@ -24,9 +24,13 @@ jobs:
       
       - name: ejecutar pruebas
         run: npm test
+      
+      - name: build
+        run: npm run build
 
   job_deploy:
     runs-on: ubuntu-latest
+    if: ${{ always()}}
     needs: job_build
 
     steps:
