@@ -37,8 +37,19 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ always()}}
     needs: job_build
+    permissions:
+      pages: write    
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-
       - name: deploy
         run: echo "Desplegando la aplicacion"
+
+      - name: Deploy
+        id: deployment-pages
+        uses: actions/deploy-pages@v4 
+
+        
