@@ -5,20 +5,8 @@ on: push
 jobs:
   job_configuraciones:
     runs-on: ubuntu-latest
-    
-    services:
-      redis:
-        image: redis:latest
-        ports:
-          - 6379:6379
 
     steps:
-
-      - name: Instalacion de redis cli
-        run: sudo apt-get update -y && sudo apt-get install redis-tools -y
-
-      - name: test redis
-        run: redis-cli -h localhost -p 6379 ping
       
       - name: checkout code
         uses: actions/checkout@v4
