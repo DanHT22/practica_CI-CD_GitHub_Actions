@@ -58,6 +58,9 @@ jobs:
       
     steps:
 
+      - name: checkout repository
+        uses: actions/checkout@v4
+
       - name: Send Email via Gmail
         uses: Raghul-M/gmail-sender-action@v1
         with:
