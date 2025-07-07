@@ -35,7 +35,6 @@ jobs:
 
   job_deploy:
     runs-on: ubuntu-latest
-    if: ${{ always()}}
     needs: job_build
     permissions:
       pages: write    
@@ -52,4 +51,18 @@ jobs:
         id: deployment-pages
         uses: actions/deploy-pages@v4 
 
-        
+  job_notificacion:
+    runs-on: ubuntu-latest
+    if: ${{ always()}}
+    needs: job_deploy
+      
+    steps:
+
+      - name: Send Email via Gmail
+        uses: Raghul-M/gmail-sender-action@v1
+        with:
+          sender_email: ${{ secrets.GMAIL_SENDER }}
+          app_password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          receiver_emails: ${{ secrets.RECIPIENTS }}
+          template_path: "templates/email_template.html"
+          subject: "Notification from GitHub Action de Daniela H"
